@@ -1,35 +1,28 @@
 #!/usr/bin/python3
-"""Interview problem - lockboxes"""
-
+"""Interview problem """
 
 def canUnlockAll(boxes):
-    """You have `n` number of locked boxes in front of you.
-    * The first box boxes[0] is unlocked.
-    Args:
-        boxes (list): list of lists containing keychain
-    Returns:
-        Bool: True if all boxes can be unlocked. False if fail
     """
-    keychain = set()
-    for n_key, box in enumerate(boxes):
-        n_key += 1
-        for key in box:
-            if key < len(boxes):
-                keychain.add(key)
-                keychain.update(boxes[key])
-            if length(keychain, boxes):
-                return True
-        if next_key not in keychain:
-            break
-    return False
-
-
-def length(keychain, boxes):
-    """compare lengths of two lists
-    Args:
-        keychain (list): keychain of boxes
-        boxes (list): boxes to be oppened
-    Returns:
-        Bool: True if equal, False if not
+    - boxes is a list of lists
+    - A key with the same number as a box opens that box
+    - You can assume all keys will be positive integers
+    - The first box boxes[0] is unlocked
+    - Return True if all boxes can be opened, else return False
     """
-    return len(keychain) == len(boxes) or len(keychain) == len(boxes) - 1
+    def int_box(box, hash):
+        """ Auxiliar function """
+        [*map(lambda x: hash.update({x: x}), box)]
+        return hash
+
+    amount_of_boxes = len(boxes)
+    hash_dict = {}
+    hash_dict = int_box(boxes[0], hash_dict)
+
+    for index in range(1, amount_of_boxes):
+
+        if index not in hash_dict.keys():
+            return False
+        hash_dict = int_box(boxes[index], hash_dict)
+        for j in hash_dict.copy().keys():
+            hash_dict = int_box(boxes[j], hash_dict)
+    return True
