@@ -35,3 +35,4 @@ int is_palindrome(listint_t **head)
 	if (!head)
 		return (0);
 	return (recurPalindrome(head, *head));
+}
