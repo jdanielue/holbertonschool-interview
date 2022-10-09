@@ -95,13 +95,13 @@ void sec_func(int grid[3][3])
 }
 
 /**
- * sandpiles_sum - Computes the sum of two sandpiles
+ * third_funct - new info trgarding the funct
  * @grid1: one col
  * @grid2: sec col
  *
  * Return: No Return
  */
-void sandpiles_sum(int grid1[3][3], int grid2[3][3])
+void third_funct(int grid1[3][3], int grid2[3][3])
 {
 	grid_sum(grid1, grid2);
 	while (!funct_one(grid1))
